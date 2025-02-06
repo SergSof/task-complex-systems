@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  car_detection:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DEVICE: "cpu"  # или "cuda" для использования GPU
+      HOST: "0.0.0.0"
+      PORT: "8000"
