@@ -28,16 +28,18 @@
 
 2. Создайте и активируйте виртуальное окружение:
 python -m venv venv
-# На macOS/Linux:
-source venv/bin/activate  
-# Для Windows: 
-.\venv\Scripts\activate
+### На macOS/Linux:
+```source venv/bin/activate```  
+### Для Windows: 
+```.\venv\Scripts\activate```
+
 
 3. Установите зависимости:
-pip install -r requirements.txt
+```pip install -r requirements.txt```
 
 4. Запустите приложение:
-python app/main.py
+```python app/main.py```
+
 
 # Использование API
 
@@ -54,13 +56,15 @@ POST
 Ответ API
 API возвращает JSON-объект, содержащий следующие поля:
 
-image_with_bbox_base64: строка, представляющая изображение с наложенными bounding boxes в формате base64.
-detections: массив объектов, каждый из которых содержит:
-box: массив координат bounding box в формате [x1, y1, x2, y2].
-confidence: уровень уверенности для данного bounding box.
+- `image_with_bbox_base64`: строка, представляющая изображение с наложенными bounding boxes в формате base64.
+- `detections`: массив объектов, каждый из которых содержит:
+- `box`: массив координат bounding box в формате `[x1, y1, x2, y2]`.
+- `confidence`: уровень уверенности для данного bounding box.
+
 Пример ответа:
+```
 {
-  "image_with_bbox_base64": "<base64-encoded-image>",
+  "image_with_bbox_base64": "",
   "detections": [
     {
       "box": [100, 150, 200, 250],
@@ -72,16 +76,15 @@ confidence: уровень уверенности для данного bounding
     }
   ]
 }
-
+```
 Для проверки API можно использовать файл check_api.py. На вход подаем картинку vid_4_720.jpg (в корне проекта), получаем результат out.jpg (тоже в корне проекта).
 
 
 
 # Ссылка на блокнот Google Colab с обучением
+<a href="https://colab.research.google.com/drive/13CAaRRoUbgyOGs_QMqul9o4DwFN_rYWk?usp=sharing"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
 
-[Google Colab](https://colab.research.google.com/drive/13CAaRRoUbgyOGs_QMqul9o4DwFN_rYWk?usp=sharing)
-
-Обученная модель: model_yolo_v11_custom.pt
+Обученная модель: model_b_yolo_v11_custom.pt
 YOLO v11
 
 - Precision: 0.996

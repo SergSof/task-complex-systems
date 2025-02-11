@@ -47,7 +47,9 @@ class CarDetectionModel:
         annotated_image = results.plot()  # Получаем изображение с нарисованными bounding boxes
 
         # Сохранение изображения с детекциями
-        output_path = 'app\\static\\detected_cars.jpg'  # Путь для сохранения результата в папке static
+        output_path = os.path.join('app', 
+                                   'static', 
+                                   'detected_cars.jpg')  # Путь для сохранения результата в папке static
         cv2.imwrite(output_path, annotated_image)  # Сохранение изображения в формате RGB
 
         return output_path, car_detections  # Возвращаем путь к изображению и детекции

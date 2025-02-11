@@ -27,12 +27,13 @@ print(f"PORT: {os.getenv('PORT')}")
 
 
 app = FastAPI()
-templates = Jinja2Templates(directory="app\\templates")
+templates = Jinja2Templates(directory=os.path.join("app", "templates"))
 
 # Инициализируем модель
-car_detection_model = CarDetectionModel(model_path="app\\models\\model_l_yolo_v11_custom.pt")
+model_path = os.path.join("app", "models", "model_l_yolo_v11_custom.pt")
+car_detection_model = CarDetectionModel(model_path=model_path)
 
-app.mount("/static", StaticFiles(directory="app/static"), name="static")
+app.mount("/static", StaticFiles(directory=os.path.join("app", "static")), name="static")
 
 @app.get("/", response_class=HTMLResponse)
 async def main(request: Request):
@@ -42,9 +43,8 @@ async def main(request: Request):
 async def upload(request: Request, file: UploadFile = File(...)):
     try:
         # Указываем путь для сохранения загружаемого файла
-        upload_folder = "app\\static\\uploads"
-        #os.makedirs(upload_folder, exist_ok=True)  # Создаём папку, если её нет
-        #file_path = os.path.join(upload_folder, file.filename)
+        upload_folder = os.path.join("app", "static", "uploads")
+        os.makedirs(upload_folder, exist_ok=True)  # Создаём папку, если её нет
         file_path = os.path.join(upload_folder, 'img_original.jpg')
 
         # Сохраняем файл на диск
@@ -84,7 +84,8 @@ async def api_detect(image_request: ImageRequest):
         if image is None:
             print("Не удалось прочитать изображение!!!!")
         # Указываем путь для сохранения изображения
-        image_path = "app\\static\\uploads\\image_api.jpg"
+        image_path = os.path.join("app", "static", "uploads", "image_api.jpg")
+       
         # Сохраняем изображение на диск 
         cv2.imwrite(image_path, image)
 
