@@ -24,7 +24,7 @@
 
 1. Клонируйте репозиторий:
    ```bash
-   git clone https://github.com/SergSof/task-complex-systems
+   git clone git clone https://github.com/SergSof/task-complex-systems.git -b master
    cd task-complex-systems
    ```
 
