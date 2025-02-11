@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Загрузка изображения</title>
+    <script>
+        function validateForm() {
+            var fileInput = document.querySelector('input[type="file"]');
+            if (!fileInput.files.length) {
+                alert("Пожалуйста, выберите файл для загрузки.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h1>Загрузите изображение для детекции автомобилей</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+        <input type="file" name="file">
+        <button type="submit">Детекция</button>
+    </form>
+</body>
+</html>

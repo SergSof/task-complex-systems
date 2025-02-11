@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Результаты детекции</title>
+</head>
+<body>
+    <h1>Результаты детекции автомобилей</h1>
+    <img src="{{ detected_image_path }}" alt="Detected Image">
+    <ul>
+        {% for detection in detections %}
+        <li>Box: {{ detection[0] }}, Confidence: {{ detection[1] }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Загрузить другое изображение</a>
+</body>
+</html>
